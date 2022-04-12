@@ -1,1 +1,1 @@
-CMakeLists.txt not found in D:\UB\POO Select CMakeLists.txt
+CMakeLists.txt not found in C:\Users\Stefan\CLionProjects\poo2022-2021 Select CMakeLists.txt

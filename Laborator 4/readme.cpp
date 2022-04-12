@@ -1,7 +1,11 @@
 #include <bits/stdc++.h>
 #include <ostream>
 
+#include <vector>
+
 using namespace std;
+
+// Supraîncărcarea funcțiilor
 
 //int sum(int a, int b) {
 //    return a + b;
@@ -28,6 +32,8 @@ using namespace std;
 //
 //    return 0;
 //}
+
+// Supraincarcarea functiilor - denumiri mai scurte, dar clare datorita parametrilor:
 
 //class Fraction {
 //
@@ -68,7 +74,7 @@ using namespace std;
 //}
 
 
-// exemplu operatori
+// Supraîncărcare operatori
 
 //class Fraction {
 //    // ...
@@ -88,7 +94,8 @@ using namespace std;
 //    }
 //
 //    friend Fraction operator+(const Fraction &f1, const Fraction &f2);
-//
+//    // Intotdeauna! implementam << si >> ca functii friend.
+//    // << poate fi generat
 //    friend ostream &operator<<(ostream &os, const Fraction &fraction);
 //    friend istream &operator<<(istream &is, Fraction &fraction);
 //
@@ -106,13 +113,15 @@ using namespace std;
 //Fraction::Fraction(int a, int b) : a(a), b(b) {}
 //
 //Fraction::Fraction() : a(0), b(1) {}
-//
+
+//// Supraîncărcare operatori de citire și scriere (de „flux” sau „stream”)
+
 //ostream &operator<<(ostream &os, const Fraction &fraction) {
 //    os << "a: " << fraction.a << " b: " << fraction.b;
 //    return os;
 //}
 //
-//istream &operator<<(istream &is, Fraction &fraction) {
+//istream &operator>>(istream &is, Fraction &fraction) {
 //    // în schimb, înainte de citire vom afișa numele datelor citite:
 //    cout << "a: ";
 //    is >> fraction.a;
@@ -120,8 +129,7 @@ using namespace std;
 //    is >> fraction.b;
 //    return is;
 //}
-//
-//// operatori de citire și scriere
+
 //
 //
 //int main() {
@@ -132,6 +140,63 @@ using namespace std;
 //
 //    return 0;
 //}
+
+
+
+
+
+// exemple vectori STL
+
+//struct Grupa {
+//    int number; // numărul grupei
+//    int cntStudents;
+//};
+//
+//vector <Grupa> sortat(vector <Grupa> v) { // primeste o COPIE a vectorului
+//    // sortam vectorul
+//    // ...
+//    // dupa care il putem returna
+//    return v;
+//}
+//
+//int main() {
+//    vector <Grupa> grupe; // la inceput are 0 elemente
+//    grupe.size();
+//
+//    vector <Grupa> copie = grupe;
+//
+//    for (auto grupa : grupe) { // pentru fiecare grupa din vector
+//        cout << "Grupa " << grupa.number
+//             << ": " << grupa.cntStudents << " studenti." << '\n';
+//    }
+//    for (int i = 0; i < grupa.size(); ++i) {
+//        cout << "Grupa " << grupe[i].number
+//             << ": " << grupa[i].cntStudents << " studenti." << '\n';
+//    }
+//
+//    // adăugare element la final
+//    grupe.push_back({143, 28});
+//    grupe.push_back({152, 30});
+//    // adresa vectorului
+//    grupe.begin(); // = adresa elementului grupe[0]
+//    grupe.end(); // = adresa primului element neatribuit grupe[grupe.size()]
+//    // ștergere elemente
+//    grupe.erase(grupe.begin());// sterge primul element
+//    grupe.push_back({102, 0})
+//    grupe.push_back({103, 0})
+//    grupe.push_back({104, 0})
+//    grupe.erase(grupe.end() - 1);// sterge ultimul element
+//    grupe.clear(); // sterge toate elementele
+//    // adaugare elemente
+//    Grupa nouaGrupa = {157, 100};
+//    // argumentele pentru .insert sunt "unde", "pe cine"
+//    //  adica insereaza la inceput noua grupa
+//    grupe.insert(grupe.begin(), nouaGrupa);
+//}
+
+//
+
+
 
 // ex. 2
 /*
@@ -146,3 +211,36 @@ Chitanta renovare:
    Total: 162.36 RON
  */
 
+// Exemplu Ex. 2 -> anteturile operatorilor
+
+class ConstructionProduct {
+private:
+    int cantitate;
+    string unitateMasura;
+public:
+    ConstructionProduct operator++() {
+        // ..
+    }
+
+    ConstructionProduct operator++(int) {
+        // ..
+    }
+
+    ConstructionProduct operator+=(int crestere) {
+        // ..
+    }
+};
+
+
+// Ex. 3 -> exemplu input
+
+/*
+Pista#1
+Constanta
+5
+100 0 0
+100 10 10
+100 1 1
+100 3 2
+100 5 0
+ */

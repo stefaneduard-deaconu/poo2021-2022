@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
-project(POO)
+project(sandbox)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(POO Hello.cpp)
+add_executable(sandbox main.cpp)
