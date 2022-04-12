@@ -1,0 +1,156 @@
+// Păun Andreea-Alexandra, Seria 14 - Grupa 143
+// Proiectul 1- 2.Listă de așteptare
+
+#include <random>
+#include <iostream>
+using namespace std;
+int randomnumber(){
+    random_device dev;
+    mt19937 rng(dev());
+    uniform_int_distribution<std::mt19937::result_type> dist6(3,5);
+    return dist6(rng);
+}
+class Comanda{
+    string numePers;
+    string numartlf;
+    int nrcomanda;
+    int id;
+public:
+    Comanda(){}
+    Comanda(string numePers_, string numartlf_, int nrcomanda_, int id_){
+        numePers=numePers_;
+        numartlf=numePers_;
+        nrcomanda=nrcomanda_;
+        id=id_;
+    }
+    string getNumePers(){
+        return numePers;
+    }
+
+    void setNumePers(string numePers_) {
+        numePers = numePers_;
+    }
+
+    string getNumartlf(){
+        return numartlf;
+    }
+
+    void setNumartlf(string numartlf_) {
+        numartlf = numartlf_;
+    }
+
+    int getNrcomanda(){
+        return nrcomanda;
+    }
+
+    void setNrcomanda(int nrcomanda_) {
+        nrcomanda = nrcomanda_;
+    }
+
+    int getId(){
+        return id;
+    }
+
+    void setId(int id_) {
+        id = id_;
+    }
+};
+class ListaDeAsteptare{
+    int numarTotal;
+    Comanda comenzi[101];
+public:
+
+    ListaDeAsteptare(){}
+
+    ListaDeAsteptare(int numarTotal_, Comanda comenzi_[]){
+        numarTotal=numarTotal_;
+        for(int i=0; i<numarTotal_; i++)
+            comenzi[i]=comenzi_[i];
+    }
+
+    void afisareOrdine(){
+        cout<<"Ordinea comenzilor:";
+        for(int i=0; i<numarTotal; i++)
+            cout<<comenzi[i].getId()<<" ";
+        cout<<"\n";
+    }
+
+    void adaugaComanda(string nume, string numar){
+        int timp=0,nrr,suma=0,Max=0;
+        timp=randomnumber();
+        for(int i=0; i<numarTotal; i++) {
+            suma = suma + comenzi[i].getNrcomanda();
+            if (comenzi[i].getId()>Max)
+                Max=comenzi[i].getId();
+        }
+        nrr=Max+1;
+        Max++;
+        Comanda x(nume, numar,timp,nrr);
+        comenzi[numarTotal]=x;
+        numarTotal++;
+        cout<<"In "<<suma<<" minute ne vom putea ocupa de comanda dumneavoastra, care va putea fi ridicata in "<<suma+timp<<" minute\n";
+    }
+    void eliminaComanda(int nrid){
+        int ok=0,poz=0, iid;
+        for(int i=0; i<numarTotal-1; i++) {
+            if (comenzi[i].getId() == nrid) {
+                ok=1;
+                poz=i;
+                iid=comenzi[poz].getId();
+                for (int j = i; j < numarTotal - 1; j++)
+                    comenzi[j] = comenzi[j + 1];
+                numarTotal--;
+            }
+        }
+
+        if(ok==1)
+            cout<<"Comanda cu Id-ul unic "<<iid<<" a fost eliminata cu succes";
+        else
+            cout<<"Nu exista aceasta comanda";
+        cout<<"\n";
+
+        cout << "Comenzile existente: ";
+        for (int i = 0; i < numarTotal; i++)
+            cout << comenzi[i].getId() << " ";
+        cout<<"\n";
+    }
+
+    void adaugaTimp(int timpderl){
+        int i=0,suma=0;
+        for(int i=0; i<numarTotal; i++)
+            suma=suma+comenzi[i].getNrcomanda();
+        if(timpderl<=suma){
+            while(timpderl>comenzi[i].getNrcomanda()) {
+                cout << "Comanda cu id-ul " << comenzi[i].getId() << " este in curs de pregatire si va fi gata in "<< comenzi[0].getNrcomanda() << " minute\n";
+                if(timpderl<comenzi[i].getNrcomanda())
+                    cout<<"Comanda cu id-ul "<<comenzi[0].getId()<<" este in curs de pregatire si va fi gata in "<<comenzi[0].getNrcomanda()<<" minute!\n";
+                timpderl = timpderl - comenzi[i].getNrcomanda();
+                i++;
+            }
+        }
+        else
+            cout<<"Nu puteti derula cu mai mult de "<<suma<<" minute, deoarece depaseste timpul total!Timp de " <<timpderl-suma<< " minute\n";
+    }
+};
+int main() {
+    Comanda comenzi[100] = {
+            Comanda("Stefanescu", "0733222744", 3, 3),
+            Comanda("Mihailescu", "0752222745", 4, 4),
+            Comanda("Popescu", "0799222746", 3, 6)
+    };
+    ListaDeAsteptare lista(3, comenzi);
+
+    lista.adaugaComanda("Prastie", "0786001002");
+
+    lista.afisareOrdine();
+
+    lista.eliminaComanda(4);
+
+    lista.eliminaComanda(1001);
+
+    lista.adaugaTimp(10);
+
+    lista.adaugaTimp(3);
+
+    lista.adaugaTimp(1);
+}

@@ -8,23 +8,23 @@ private:
     string parola;
 public:
     Crypt(){
-    parola="";
+        parola="";
     }
     Crypt(string _parola){
-    parola=_parola;
+        parola=_parola;
     }
     void CitireParola(){
         getline(cin,parola);
         setParola(parola);
     }
     void setParola(string _parola){
-    parola=_parola;
+        parola=_parola;
     }
     string getParola(){
-    return parola;
+        return parola;
     }
     int getDimesiune(){
-    return parola.size();
+        return parola.size();
     }
 
     string encrypt(string mesaj)
@@ -95,13 +95,13 @@ public:
 
 int main()
 {
-   Crypt crypt("POO justice");
-   string mesaj="Happy";
-   string criptat=crypt.encrypt(mesaj);
-   cout<<mesaj<<" POO justice "<<criptat<<endl;
-   CryptedConversation conversation(crypt);
-   conversation.addMessage("Salutare! Cand urmeaza sa ne auzim?");
-   conversation.addMessage("Cat de curand... stai o clipa");
+    Crypt crypt("POO justice");
+    string mesaj="Happy";
+    string criptat=crypt.encrypt(mesaj);
+    cout<<mesaj<<" POO justice "<<criptat<<endl;
+    CryptedConversation conversation(crypt);
+    conversation.addMessage("Salutare! Cand urmeaza sa ne auzim?");
+    conversation.addMessage("Cat de curand... stai o clipa");
 
     conversation.addMessage("-Knock knock!");
     conversation.addMessage("-Who's there?");
@@ -114,7 +114,7 @@ int main()
     conversation.show(2,10);
     cout<<conversation.getMessCrypt(0)<<endl;
     conversation.updateKey("Kee");
-     cout<<conversation.getMessCrypt(0)<<endl;
+    cout<<conversation.getMessCrypt(0)<<endl;
     conversation.show(0,7);
 
 
