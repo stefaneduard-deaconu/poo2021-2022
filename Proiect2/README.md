@@ -1,6 +1,6 @@
 # Top cerinte
 
-## Comune
+## În comun
 
 1. Building a classical game
 

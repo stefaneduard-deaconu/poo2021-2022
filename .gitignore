@@ -1,4 +1,16 @@
+# C++ build files
 cmake-build-debug/
+
+# Python virtual environments
 venv/
-/scripts/venv/
+# Python caching
 __pycache__/
+# PyInstaller output files
+build/
+dist/
+*.spec
+# executables created by PyInstaller
+*.exe
+
+# archives
+*.zip
