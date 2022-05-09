@@ -30,8 +30,8 @@ for package in packages:
         if fname.endswith('.spec'):
             remove(fname)
 
-    my_env = environ.copy()
-    my_env['PYTHONOPTIMIZE'] = '2'
+#     my_env = environ.copy()
+#     my_env['PYTHONOPTIMIZE'] = '2'
 
     # pyinstaller = './venv/Scripts/pyinstaller.exe'
     proc = run([
@@ -43,7 +43,7 @@ for package in packages:
         paths__,
         # '--noconsole',
         py_file,
-    ], text=True, capture_output=True, env=my_env)
+    ], text=True, capture_output=True)  #, env=my_env)
 
     # Make output dir
     try:

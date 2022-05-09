@@ -18,7 +18,7 @@ if __name__ == '__main__':
                 pixels = []
                 for i in range(M * N):
                     line: str
-                    try:
+                     try:
                         line = file.readline().split(' ')
                         pixels.append(
                             [int(s) for s in line]

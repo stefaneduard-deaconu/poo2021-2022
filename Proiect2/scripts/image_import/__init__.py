@@ -1,5 +1,8 @@
 from functools import reduce
-from PIL.Image import open
+from PIL import Image
+import numpy
+
+from os import getcwd, listdir
 
 if __name__ == '__main__':
     while True:
@@ -7,7 +10,13 @@ if __name__ == '__main__':
         # print(img_filename)
 
         try:
-            img_arr = open(img_filename).convert('RGB').__array__()
+            img_arr = Image.open(img_filename)
+            try:
+                img_arr = img_arr.convert('RGB')
+                img_arr = img_arr.__array__()
+            except BaseException as e:
+                print('Error on image convert', e)
+
             # Image.fromarray(img_arr).show()
             # Image.fromarray(img_arr).save('../hello.jpg')
             # print(img_arr, img_arr.shape)
@@ -33,11 +42,15 @@ if __name__ == '__main__':
             Pmxn
             '''
             try:
+                txt_filename = img_filename.replace(
+                    img_filename[img_filename.rfind('.'):],
+                    '.txt')
                 with open(
-                        img_filename.replace(
-                            img_filename[img_filename.rfind('.'):],
-                            '.txt'),
+                        txt_filename,
                         'w') as file:
+                    print('...')
+                    print("...We are importing your image. Just a few moments :)")
+
                     M, N = img_arr.shape[:2]
                     file.write(f'{M} {N}\n')
                     for pixel in reduce(lambda a, b: list(a) + list(b), img_arr):
@@ -49,4 +62,7 @@ if __name__ == '__main__':
         except BaseException as e:
             print(f'Couldn\'t find any image at location {img_filename}')
 
+            print(f'Location {getcwd()} contains following files: {listdir(getcwd())}')
+    print('...')
+    print(f"Successfully saved file {txt_filename} to {getcwd()}")
     input('Press Enter to end the program! :)')
