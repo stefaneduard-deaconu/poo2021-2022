@@ -82,4 +82,9 @@ if __name__ == '__main__':
 
     # generate_group_folders('../Proiect1', groups)
     # generate_CMakeLists_dot_txt('../Proiect1', groups)
-    extract_archive(r'D:\UB\POO\Proiect1\143\Cazacu Cristian-Gabriel\problema1_proiect1.rar')
+    # TODO it is useful
+    # extract_archive(r'D:\UB\POO\Proiect1\143\Cazacu Cristian-Gabriel\problema1_proiect1.rar')
+
+    # TODO tmp - let's print the names
+    for student in grupa_152:
+        print(student.get('Numele si prenumele'))

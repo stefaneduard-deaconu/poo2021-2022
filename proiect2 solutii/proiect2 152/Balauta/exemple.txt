@@ -1,0 +1,10 @@
+4
+2
+Rootkit 10 4 2002 inf1 2 HKLM-run ebx 4 imp1, ntoskrnl.exe, ntoskrnl.exe, imp4. 5 ceva, System Service Descriptor Table, altceva, SSDT, NtCreateFile.
+Keylogger 10 4 2002 inf1 2 eax HKCU-run 4 ReadFile, f2, WriteFile, f3. 5 [Num Lock], [Down], [Up], ceva, altceva.
+1
+Kernel-Keylogger 12 4 2003 inf3 2 HKLM-run HKCU-run 4 imp1, ntoskrnl.exe, ntoskrnl.exe, imp4. 5 ceva, System Service Descriptor Table, altceva, SSDT, NtCreateFile. 1 1 4 ReadFile, f2, WriteFile, f3. 5 [Num Lock], [Down], [Up], ceva, altceva.
+0
+1
+Ransomware 11 4 2002 inf2 2 ecx edx 7 50
+

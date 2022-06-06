@@ -6,6 +6,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 #add_executable(POO "143/Besliu Radu/Besliu Radu.cpp")
 #add_executable(POO "143/Cazacu Cristian-Gabriel/main.cpp")
-add_executable(POO "143/Cristea Petru-Theodor/main(1).cpp")
+add_executable(POO "152/Dumitrescu D Tudor-Constantin/main(13).cpp")
 
 

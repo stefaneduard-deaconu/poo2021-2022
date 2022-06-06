@@ -179,6 +179,46 @@ void listeazaMasiniLibere(Spalatorie spalatorie)
 }
 
 int main() {
+// declararea spalatoriei
+    Masina masini[5] = {
+            Masina(true, Durata(0, 0), 3),
+            Masina(true, Durata(0, 0), 2),
+            Masina(true, Durata(0, 0), 5),
+    };
+    Spalatorie spalatorie(
+            3,
+            masini
+    );
 
+// listare initiala
+    spalatorie.listeazaMasini();
+    listeazaMasiniLibere(spalatorie);
+
+    spalatorie.adaugaJob(
+            1,
+            Durata(1, 20)
+    );
+    spalatorie.listeazaMasini();
+
+    spalatorie.actualizeazaTimp(Durata(1, 19));
+    spalatorie.listeazaMasini();
+
+    spalatorie.actualizeazaTimp(Durata(1, 0));
+    spalatorie.listeazaMasini(); // metoda
+
+// adaugam inca o spalare la masina 1, ca sa ramana fara capsule
+    spalatorie.adaugaJob(
+            1,
+            Durata(0, 35)
+    );
+    spalatorie.actualizeazaTimp(Durata(3, 0));
+
+// Incercam sa adaugam inca o spalare. Ar trebui sa afiseze mesajul "Masina 1 nu mai are capsule!"
+    spalatorie.adaugaJob(
+            1,
+            Durata(0, 35)
+    );
+// Ceea ce se poate observa si din listarea masinilor:
+    spalatorie.listeazaMasini();
     return 0;
 }
